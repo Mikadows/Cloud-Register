@@ -1,6 +1,5 @@
 require('dotenv').config();
-var bodyParser = require('body-parser');
-var middlewares = require('./middlewares/middlewares');
+const middlewares = require('./middlewares/middlewares');
 const userDao = require('./dao/userDao');
 const express = require("express"), app = express();
 
