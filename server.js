@@ -1,7 +1,9 @@
 require('dotenv').config();
+var bodyParser = require('body-parser')
 var express = require("express"), app = express()
 const Cloudant = require('@cloudant/cloudant');
 const vcap = require('./config/vcap-local.json');
+var middlewares = require('./middlewares/middlewares');
 
 dbCloudantConnect();
 
@@ -34,3 +36,18 @@ function dbCloudantConnect() {
         }));
     });
 }
+
+app.post('/create_user', middlewares.parseData(), function(req, res){
+    var fullname = req.body.fullname
+    var email = req.body.email
+    var phone = req.body.phone
+    var password = req.body.password
+    var repeatPassword = req.body.repeatPassword
+
+    console.log(fullname)
+    console.log(email)
+    console.log(phone)
+    console.log(password)
+    console.log(repeatPassword)
+
+})

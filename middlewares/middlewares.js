@@ -1,6 +1,7 @@
+var bodyParser = require('body-parser')
+
 class Middlewares {
     static parseData = (req, res, next) => {
-        console.log(req,req)
         if (req.method === 'POST') {
             const formData = {}
             req.on('data', data => {
