@@ -1,5 +1,3 @@
-var bodyParser = require('body-parser')
-
 class Middlewares {
     static parseData = (req, res, next) => {
         if (req.method === 'POST') {
