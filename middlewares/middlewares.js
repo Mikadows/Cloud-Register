@@ -1,5 +1,5 @@
 class Middlewares {
-    static parseData = (req, res, next) => {
+    static parseData(req, res, next){
         if (req.method === 'POST') {
             const formData = {}
             req.on('data', data => {
