@@ -6,7 +6,7 @@
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "https://github.com/Mikadows/Cloud-Register",
   "license": "ISC",
   "description": "",
   "dependencies": {

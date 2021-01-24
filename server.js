@@ -1,9 +1,4 @@
-var express = require("express"),
-    app = express()
-
-// app.get('/', (req, res) => {
-//     res.send('Hello World!');
-// });
+var express = require("express"), app = express()
 
 app.use(express.static(__dirname + "/public"));
 
@@ -14,4 +9,3 @@ app.listen(port, function() {
 });
 
 
-// require("cf-deployment-tracker-client").track();
