@@ -1,0 +1,43 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
+
+<div class="container">
+
+
+    <div class="card bg-light">
+        <article class="card-body mx-auto" style="max-width: 400px;">
+            <h4 class="card-title mt-3 text-center">Upload your avatar</h4>
+            <p class="text-center">Upload your best smile !</p>
+
+            <form action="/uploadPic" method="POST" enctype="multipart/form-data">
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-file"></i> </span>
+                    </div>
+                    <input type='file' name='photo' class="form-control" />
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block"> Upload Avatar  </button>
+                </div>
+            </form>
+        </article>
+    </div> <!-- card.// -->
+
+</div>
+<!--container end.//-->
+
+<br><br>
+<article class="bg-secondary mb-3">
+    <div class="card-body text-center">
+        <h3 class="text-white mt-3">Cloud-Register Projet</h3>
+        <p class="h5 text-white">ESGI students - 4AL1 <br> Marion Mota, Aymeric Larvet, Gwendal Siwiorek</p>   <br>
+        <p><a class="btn btn-warning" target="_blank" href="https://github.com/Mikadows/Cloud-Register"> GitHub.com
+            <i class="fa fa-window-restore "></i></a></p>
+    </div>
+    <br><br>
+</article>

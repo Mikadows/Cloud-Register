@@ -17,6 +17,9 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "ibm-cloud-sdk-core": "^2.7.1",
+    "multer": "^1.4.2",
+    "skipper": "^0.8.7",
+    "skipper-s3": "^0.6.0",
     "uuid": "^8.3.2"
   },
   "engines": {

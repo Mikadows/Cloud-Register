@@ -4,6 +4,13 @@ const userDao = require('./dao/userDao');
 const express = require("express"), app = express();
 const AWS = require('aws-sdk');
 
+const multer = require('multer');
+const upload = multer({ storage: multer.memoryStorage() });
+
+const s3 = new AWS.S3({
+    accessKeyId: process.env.AWS_S3_KEY,
+    secretAccessKey: process.env.AWS_S3_SECRET
+});
 
 app.use(express.static(__dirname + "/public"));
 
@@ -57,5 +64,40 @@ app.post('/create_user', middlewares.parseData, async function(req, res){
             res.status(500).json("{message: Account Created but SMS failed}")
         });
 
-    res.status(201).json("{message: User Created}")
+
+    res.redirect('/picture')
+    // res.status(201).json("{message: User Created}")
 })
+
+app.get('/picture', async (req, res) => {
+    res.sendFile(__dirname + "/public/picture.html")
+})
+
+app.post('/uploadPic', upload.single('photo'), async (req, res) => {
+//
+    if (req.file) {
+        console.log('Uploaded: ', req.file);
+        uploadFile(req.file)
+        res.status(201).json("{message: File uploaded}")
+    } else {
+        res.status(404).json("{message: File not found}")
+    }
+})
+
+const uploadFile = (file) => {
+
+    // Setting up S3 upload parameters
+    const params = {
+        Bucket: 'my-storage-cours-esgi',
+        Key: file.originalname, // File name you want to save as in S3
+        Body: file.buffer
+    };
+
+    // Uploading files to the bucket
+    s3.upload(params, function(err, data) {
+        if (err) {
+            throw err;
+        }
+        console.log(`File uploaded successfully. ${data.Location}`);
+    });
+};

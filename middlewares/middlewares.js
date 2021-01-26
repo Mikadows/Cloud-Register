@@ -14,7 +14,8 @@ class Middlewares {
 
                     const [key, value] =
                         decodedData.split('=')
-
+                    //DEBUG input
+                    // console.log(key + " " + value)
                     // Accumulate submitted
                     // data in an object
                     formData[key] = value
