@@ -1,0 +1,5 @@
+applications:
+  - name: cloud-esgi-project-register
+    command: node server.js
+    memory: 256M
+    path: .
