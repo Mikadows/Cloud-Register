@@ -64,6 +64,7 @@ app.post('/create_user', middlewares.parseData, async function(req, res){
             res.status(500).json("{message: Account Created but SMS failed}")
         });
 
+    await sendMailTo(user)
 
     res.redirect('/picture')
     // res.status(201).json("{message: User Created}")
@@ -101,3 +102,42 @@ const uploadFile = (file) => {
         console.log(`File uploaded successfully. ${data.Location}`);
     });
 };
+
+const sendMailTo = (user) => {
+    const ses = new AWS.SES({ apiVersion: "2010-12-01" });
+    const params = {
+        Destination: {
+            ToAddresses: [user.email] // Email address/addresses that you want to send your email
+        },
+        ConfigurationSetName: "TestSet",
+        Message: {
+            Body: {
+                Html: {
+                    // HTML Format of the email
+                    Charset: "UTF-8",
+                    Data:
+                        `<html><body><h1>Hello ${user.fullName}</h1><p style='color:red'>You received this email from SES !</p> </body></html>`
+                },
+                Text: {
+                    Charset: "UTF-8",
+                    Data: `Hello ${user.fullName} You received this email from SES !`
+                }
+            },
+            Subject: {
+                Charset: "UTF-8",
+                Data: "Cloud Project - ESGI"
+            }
+        },
+        Source: process.env.AWS_SOURCE_MAIL
+    };
+
+    const sendEmail = ses.sendEmail(params).promise();
+
+    sendEmail
+        .then(data => {
+            console.log("email submitted to SES", data);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+}
