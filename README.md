@@ -7,6 +7,10 @@ Auteurs : Marion Mota, Aymeric Larvet, Gwendal Siwiorek - ESGI 4AL1
 Prérequis :
 
 * Avoir NodeJS
+* Base de données Cloudant (ibm cloud)
+* AWS S3
+* AWS SNS
+* AWS SES
 
 Récupérer le projet :
 
